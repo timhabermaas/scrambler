@@ -30,6 +30,7 @@ Here's a list of all currently supported puzzles and their corresponding class n
     Pyraminx  Pyraminx
     Clock     Clock
     Square-1  Square1
+    Megaminx  Megaminx
 
 Usage
 -----
