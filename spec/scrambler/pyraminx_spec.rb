@@ -4,7 +4,7 @@ describe Scrambler::Pyraminx do
   let(:valid_tip_turns) { %w(l l' r r' u u' b b') }
   let(:valid_turns) { %w(l l' r r' u u' b b' L L' R R' U U' B B') }
 
-  it "should only include valid turns" do
+  it "should contain only valid turns" do
     subject.scramble.split(" ").each do |turn|
       valid_turns.should include(turn)
     end
