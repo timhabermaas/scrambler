@@ -15,10 +15,8 @@ describe Scrambler::Pyraminx do
   end
 
   it "should return a 10 move scramble" do
-    10.times do
-      subject.scramble(10).split(" ").reject do |turn|
-        valid_tip_turns.include? turn
-      end.should have(10).elements
+    5.times do
+      subject.scramble(10).split(" ").should have(10).elements
     end
   end
 end
