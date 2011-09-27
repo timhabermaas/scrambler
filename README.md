@@ -29,6 +29,7 @@ Here's a list of all currently supported puzzles and their corresponding class n
     7x7x7     SevenBySeven
     Pyraminx  Pyraminx
     Clock     Clock
+    Square-1  Square1
 
 Usage
 -----
