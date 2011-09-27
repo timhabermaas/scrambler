@@ -1,3 +1,4 @@
+# borrowed from activesupport
 class Array
   def sample(n=nil)
     return self[Kernel.rand(size)] if n.nil?
