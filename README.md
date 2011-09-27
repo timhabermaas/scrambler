@@ -28,11 +28,12 @@ Here's a list of all currently supported puzzles and their corresponding class n
     6x6x6     SixBySix
     7x7x7     SevenBySeven
     Pyraminx  Pyraminx
+    Clock     Clock
 
 Usage
 -----
 
-Just create an instance of the puzzle class and call `scramble` on it. `scramble` has one optional argument which specifies the scramble length.
+Just create an instance of the puzzle class and call `scramble` on it. `scramble` usually has one optional argument which specifies the scramble length.
 
     require "rubygems"
     require "scrambler"
@@ -43,5 +44,5 @@ Just create an instance of the puzzle class and call `scramble` on it. `scramble
     Scrambler::ThreeByThree.new.scramble(10)
     # => "U2 F2 R2 B L U2 R2 D' L' F2"
 
-    Scrambler::Pyraminx.new.scramble # defaults to 25 moves
-    # => "l' r L' R L B R B' U B' U' R' U B' U' L' R U' B U R L U' R' U'"
+    Scrambler::Clock.new.scramble # there's no scramble length parameter
+    # => "UUdd u=2; d=-5 / dUdU u=-3; d=6 / ddUU u=6; d=3 / UdUd u=3; d=2 / dUUU u=5 / UdUU u=-2 / UUUd u=6 / UUdU u=4 / UUUU u=1 / dddd d=0 / UUdd"
