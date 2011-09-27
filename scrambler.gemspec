@@ -5,7 +5,7 @@ Gem::Specification.new do |s|
   s.version      = Scrambler::VERSION
   s.date         = "2011-09-27"
   s.summary      = "Scrambler for cubes and other puzzles"
-  s.description  = "Scrambler provides scrambles for all WCA puzzles"
+  s.description  = "Scrambler for cubes and other puzzles"
   s.authors      = ["Tim Habermaas"]
   s.email        = "t.habermaas@gmail.com"
   s.homepage     = "https://github.com/timhabermaas/scrambler"
