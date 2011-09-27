@@ -32,14 +32,16 @@ Here's a list of all currently supported puzzles and their corresponding class n
 Usage
 -----
 
-Just create an instance of the puzzle class and call `scramble` on it.
+Just create an instance of the puzzle class and call `scramble` on it. `scramble` has one optional argument which specifies the scramble length.
 
     require "rubygems"
     require "scrambler"
 
+    Scrambler::ThreeByThree.new.scramble # defaults to 25 moves
+    # => "U F2 L' D R U' R2 U2 F D' R' D' F2 U2 R2 B R2 D F2 R2 F' U' B2 U B'"
+
+    Scrambler::ThreeByThree.new.scramble(10)
+    # => "U2 F2 R2 B L U2 R2 D' L' F2"
+
     Scrambler::Pyraminx.new.scramble # defaults to 25 turns
     # => "l' r L' R L B R B' U B' U' R' U B' U' L' R U' B U R L U' R' U'"
-
-    Scrambler::Pyraminx.new.scramble(5)
-    # => "l' r' u L B'"
-
