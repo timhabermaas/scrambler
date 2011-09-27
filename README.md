@@ -10,14 +10,14 @@ Install it as a gem
 
     gem install scrambler
 
-or if you use Bundler to handle your dependencies, add this to your Gemfile and run `bundle`
+or if you use Bundler to handle your dependencies, add this to your Gemfile and run `bundle`.
 
     gem "scrambler"
 
 Supported Puzzles
 -----------------
 
-Here's a list of all currently supported puzzles and their corresponding class names (note: they're all contained in the `Scrambler` module)
+Here's a list of all currently supported puzzles and their corresponding class names (note: they're all contained in the `Scrambler` module):
 
     Puzzle    Class
     --------  ------------
