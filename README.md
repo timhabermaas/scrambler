@@ -20,14 +20,22 @@ Supported Puzzles
 Here's a list of all currently supported puzzles and their corresponding class names (note: they're all contained in the `Scrambler` module)
 
     Puzzle    Class
-    ----------------------
+    --------  ------------
+    2x2x2     TwoByTwo
     3x3x3     ThreeByThree
+    4x4x4     FourByFour
+    5x5x5     FiveByFive
+    6x6x6     SixBySix
+    7x7x7     SevenBySeven
     Pyraminx  Pyraminx
 
 Usage
 -----
 
 Just create an instance of the puzzle class and call `scramble` on it.
+
+    require "rubygems"
+    require "scrambler"
 
     Scrambler::Pyraminx.new.scramble # defaults to 25 turns
     # => "l' r L' R L B R B' U B' U' R' U B' U' L' R U' B U R L U' R' U'"
