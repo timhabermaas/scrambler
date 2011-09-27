@@ -1,5 +1,7 @@
 require "scrambler/version"
 
+require "scrambler/pyraminx"
+
 module Scrambler
   class Scrambler
     def scramble(puzzle)
