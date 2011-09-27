@@ -24,7 +24,7 @@ describe Scrambler::Clock do
   it "should only turn clocks between -5 and 6 hours" do
     10.times do
       subject.scramble.scan(/u=(-?\d+)/) do |value|
-        (-5..6).should include(value.first.to_i) # test for value being a number
+        (-5..6).should include(value.first.to_i)
       end
     end
   end
