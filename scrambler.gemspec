@@ -10,7 +10,7 @@ Gem::Specification.new do |s|
   s.email        = "t.habermaas@gmail.com"
   s.homepage     = "https://github.com/timhabermaas/scrambler"
 
-  s.files        = ["lib/scrambler.rb"]
+  s.files        = Dir["{lib,spec}/**/*", "Gemfile"]
   s.require_path = "lib"
 
   s.add_development_dependency "rspec", "~> 2.6.0"
