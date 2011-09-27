@@ -16,4 +16,12 @@ describe Scrambler::TwoByTwo do
       valid_turns.should include(turn)
     end
   end
+
+  describe "random state" do
+    subject { Scrambler::TwoByTwo.new(true) }
+
+    it "should not have more than 11 moves" do
+      subject.scramble.split(" ").size.should be <= 11
+    end
+  end
 end
