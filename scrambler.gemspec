@@ -8,6 +8,7 @@ Gem::Specification.new do |s|
   s.description  = ""
   s.authors      = ["Tim Habermaas"]
   s.email        = "t.habermaas@gmail.com"
+  s.homepage     = "https://github.com/timhabermaas/scrambler"
 
   s.files        = ["lib/scrambler.rb"]
   s.require_path = "lib"
