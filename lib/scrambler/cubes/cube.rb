@@ -1,4 +1,5 @@
 require "scrambler/cubes/corner_orientation"
+require "scrambler/cubes/corner_permutation"
 
 module Scrambler
   class Cube
