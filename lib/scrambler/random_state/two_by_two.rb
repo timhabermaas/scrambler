@@ -19,8 +19,10 @@ module Scrambler
 
       def scramble
         permutation = SOLVED_PERMUTATION.shuffle
+        orientation = Array.new(6) { rand 3 }
+        orientation += [3 - orientation.inject { |sum, i| sum + i } % 3] # fix orientation parity
 
-        solve(CornerPermutation.new(permutation), nil)
+        solve(CornerPermutation.new(permutation), CornerOrientation.new(orientation))
       end
 
       def solve(corner_permutation, corner_orientation)
