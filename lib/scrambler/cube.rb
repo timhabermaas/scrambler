@@ -1,6 +1,3 @@
-require "scrambler/cubes/corner_orientation"
-require "scrambler/cubes/corner_permutation"
-
 module Scrambler
   class Cube
     def scramble(turns, length)
@@ -14,10 +11,6 @@ module Scrambler
   end
 
   class TwoByTwo < Cube
-    def initialize(random_state = false)
-      @random_state = random_state
-    end
-
     def scramble(length = 20)
       turns = [%w{R L}, %w{F B}, %w{D U}]
       super turns, length

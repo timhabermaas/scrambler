@@ -1,6 +1,6 @@
 require "spec_helper"
 
-describe Scrambler::CornerPermutation do
+describe Scrambler::RandomState::CornerPermutation do
   it "should return solved permutation after initialization" do
     subject.to_a.should == [0, 1, 2, 3, 4, 5, 6, 7]
     subject.to_i.should == 0
