@@ -8,12 +8,12 @@
 module Scrambler
   module RandomState
     class CornerOrientation
-      def initialize
-        @orientation = [0] * 7
+      def initialize(orientation = [0] * 7)
+        @orientation = orientation.clone
       end
 
       def to_a
-        @orientation + [0]
+        @orientation
       end
 
       def turn(move)

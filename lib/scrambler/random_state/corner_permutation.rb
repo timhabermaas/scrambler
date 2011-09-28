@@ -1,12 +1,12 @@
 module Scrambler
   module RandomState
     class CornerPermutation
-      def initialize
-        @permutation = [0, 1, 2, 3, 4, 5, 6]
+      def initialize(permutation = [0, 1, 2, 3, 4, 5, 6])
+        @permutation = permutation.clone
       end
 
       def to_a
-        @permutation + [7]
+        @permutation
       end
 
       def turn(move)
