@@ -1,7 +1,7 @@
 require "spec_helper"
 
 describe Scrambler::RandomState::CornerOrientation do
-  it "should have all corners soriented right after initialization" do
+  it "should have all corners oriented right after initialization" do
     subject.to_a.should == [0] * 7
   end
 
