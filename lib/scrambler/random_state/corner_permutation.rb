@@ -10,7 +10,7 @@ module Scrambler
       end
 
       def turn!(move)
-        p = @permutation.clone
+        p = @permutation
         case move
         when :R
           @permutation = [p[1], p[5], p[2], p[3], p[0], p[4], p[6]]

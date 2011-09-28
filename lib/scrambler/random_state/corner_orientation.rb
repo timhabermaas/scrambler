@@ -17,7 +17,7 @@ module Scrambler
       end
 
       def turn!(move)
-        o = @orientation.clone
+        o = @orientation
         case move
         when :R
           @orientation = [(o[1] + 1) % 3, (o[5] + 2) % 3, o[2], o[3], (o[0] + 2) % 3, (o[4] + 1) % 3, o[6]]
