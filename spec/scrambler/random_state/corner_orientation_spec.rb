@@ -2,7 +2,6 @@ require "spec_helper"
 
 describe Scrambler::RandomState::CornerOrientation do
   it "should have all corners soriented right after initialization" do
-    subject.to_i.should == 0
     subject.to_a.should == [0] * 8
   end
 
@@ -27,9 +26,5 @@ describe Scrambler::RandomState::CornerOrientation do
             turn(:R).turn(:R).turn(:R).turn(:U).turn(:U).turn(:U).
             turn(:R).turn(:U).turn(:R).turn(:U).turn(:R).
             turn(:U).turn(:U).turn(:U).turn(:R).to_a.should == [0] * 8
-  end
-
-  it "should return 412 as numerical representation after R turn" do
-    subject.turn(:R).to_i.should == 412
   end
 end

@@ -16,11 +16,6 @@ module Scrambler
         @orientation + [0]
       end
 
-      def to_i
-        n = -1
-        @orientation.inject(0) { |sum, i| n += 1; sum + i * (3**n) }
-      end
-
       def turn(move)
         o = @orientation.clone
         case move

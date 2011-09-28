@@ -9,10 +9,6 @@ module Scrambler
         @permutation + [7]
       end
 
-      def to_i
-        0
-      end
-
       def turn(move)
         p = @permutation.clone
         case move
