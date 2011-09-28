@@ -16,7 +16,7 @@ module Scrambler
         @orientation
       end
 
-      def turn(move)
+      def turn!(move)
         o = @orientation.clone
         case move
         when :R

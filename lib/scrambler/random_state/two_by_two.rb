@@ -10,9 +10,9 @@ module Scrambler
       def initialize
         @permutation_map = {}
         SOLVED_PERMUTATION.permutation.each do |p|
-          @permutation_map[p] = { :R => CornerPermutation.new(p).turn(:R),
-                                  :U => CornerPermutation.new(p).turn(:U),
-                                  :F => CornerPermutation.new(p).turn(:F)
+          @permutation_map[p] = { :R => CornerPermutation.new(p).turn!(:R),
+                                  :U => CornerPermutation.new(p).turn!(:U),
+                                  :F => CornerPermutation.new(p).turn!(:F)
                                 }
         end
       end
@@ -45,7 +45,7 @@ module Scrambler
             unless solution.last == turn
               perm = current_permutation.clone
               ["", "2", "'"].each do |modifier|
-                perm.turn(turn)
+                perm.turn!(turn)
                 s = search(perm, current_orientation, limit, solution + ["#{turn}#{modifier}"], moves + 1)
                 return s if s
               end

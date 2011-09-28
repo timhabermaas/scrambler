@@ -9,7 +9,7 @@ module Scrambler
         @permutation
       end
 
-      def turn(move)
+      def turn!(move)
         p = @permutation.clone
         case move
         when :R
