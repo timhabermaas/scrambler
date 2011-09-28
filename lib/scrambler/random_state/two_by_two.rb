@@ -5,7 +5,7 @@ module Scrambler
   module RandomState
     class TwoByTwo
       SOLVED_PERMUTATION = [0, 1, 2, 3, 4, 5, 6]
-      SOLVED_ORIENTATION = [0] * 6
+      SOLVED_ORIENTATION = [0] * 7
 
       def initialize
         @permutation_map = {}
@@ -15,12 +15,22 @@ module Scrambler
                                   :F => CornerPermutation.new(p).turn!(:F)
                                 }
         end
+
+        @orientation_map = {}
+        (3**7).times do |i|
+          number = "%07d" % i.to_s(3)
+          o = number.split(//).map { |e| e.to_i } # TODO remove parity
+          @orientation_map[o] = { :R => CornerOrientation.new(o).turn!(:R),
+                                  :U => CornerOrientation.new(o).turn!(:U),
+                                  :F => CornerOrientation.new(o).turn!(:F)
+                                }
+        end
       end
 
       def scramble
         permutation = SOLVED_PERMUTATION.shuffle
         orientation = Array.new(6) { rand 3 }
-        orientation += [3 - orientation.inject { |sum, i| sum + i } % 3] # fix orientation parity
+        orientation += [2 - orientation.inject { |sum, i| sum + i } % 3] # fix orientation parity
 
         solve(CornerPermutation.new(permutation), CornerOrientation.new(orientation))
       end
@@ -36,17 +46,19 @@ module Scrambler
 
     private
       def search(current_permutation, current_orientation, limit, solution = [], moves = 0)
-        if current_permutation.to_a == SOLVED_PERMUTATION
+        if current_permutation.to_a == SOLVED_PERMUTATION and current_orientation.to_a == SOLVED_ORIENTATION
           return solution
         elsif moves >= limit
           return false
         else
           [:R, :U, :F].each do |turn|
-            unless solution.last == turn
-              perm = current_permutation.clone
+            if solution.last == nil or solution.last[0] != turn
+              next_permutation = current_permutation
+              next_orientation = current_orientation
               ["", "2", "'"].each do |modifier|
-                perm.turn!(turn)
-                s = search(perm, current_orientation, limit, solution + ["#{turn}#{modifier}"], moves + 1)
+                next_permutation = @permutation_map[next_permutation.to_a][turn]
+                next_orientation = @orientation_map[next_orientation.to_a][turn]
+                s = search(next_permutation, next_orientation, limit, solution + ["#{turn}#{modifier}"], moves + 1)
                 return s if s
               end
             end
