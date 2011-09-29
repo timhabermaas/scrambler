@@ -9,11 +9,21 @@ module Scrambler
   module RandomState
     class CornerOrientation
       def initialize(orientation = [0] * 7)
-        @orientation = orientation.clone
+        case orientation
+        when Array
+          @orientation = orientation.clone
+        else
+          @orientation = convert_to_array orientation
+        end
       end
 
       def to_a
         @orientation
+      end
+
+      def to_i
+        n = -1
+        @orientation.inject(0) { |sum, i| n += 1; sum + i * (3**n) }
       end
 
       def turn!(move)
@@ -27,6 +37,14 @@ module Scrambler
           @orientation = [o[3], o[0], o[1], o[2], o[4], o[5], o[6]]
         end
         self
+      end
+
+    private
+      def convert_to_array(number)
+        short = number.to_s(3).reverse.split(//).map do |s|
+          s.to_i
+        end
+        short + [0] * (7 - short.size)
       end
     end
   end

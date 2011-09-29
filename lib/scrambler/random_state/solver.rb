@@ -8,21 +8,19 @@ module Scrambler
       SOLVED_ORIENTATION = [0] * 7
 
       def initialize
-        @permutation_map = {}
+        @permutation_map = []
         SOLVED_PERMUTATION.permutation.each do |p|
-          @permutation_map[p] = { :R => CornerPermutation.new(p).turn!(:R),
-                                  :U => CornerPermutation.new(p).turn!(:U),
-                                  :F => CornerPermutation.new(p).turn!(:F)
-                                }
+          @permutation_map[CornerPermutation.new(p).to_i] = { :R => CornerPermutation.new(p).turn!(:R).to_i,
+                                                              :U => CornerPermutation.new(p).turn!(:U).to_i,
+                                                              :F => CornerPermutation.new(p).turn!(:F).to_i
+                                                            }
         end
 
-        @orientation_map = {}
+        @orientation_map = []
         (3**7).times do |i|
-          number = "%07d" % i.to_s(3)
-          o = number.split(//).map { |e| e.to_i } # TODO remove parity
-          @orientation_map[o] = { :R => CornerOrientation.new(o).turn!(:R),
-                                  :U => CornerOrientation.new(o).turn!(:U),
-                                  :F => CornerOrientation.new(o).turn!(:F)
+          @orientation_map[i] = { :R => CornerOrientation.new(i).turn!(:R).to_i,
+                                  :U => CornerOrientation.new(i).turn!(:U).to_i,
+                                  :F => CornerOrientation.new(i).turn!(:F).to_i
                                 }
         end
       end
@@ -31,14 +29,14 @@ module Scrambler
         move_limit = -1
         begin
           move_limit += 1
-        end while !(solution = search(corner_permutation, corner_orientation, move_limit))
+        end while !(solution = search(corner_permutation.to_i, corner_orientation.to_i, move_limit))
 
         solution.join " "
       end
 
     private
       def search(current_permutation, current_orientation, limit, solution = [], moves = 0)
-        if current_permutation.to_a == SOLVED_PERMUTATION and current_orientation.to_a == SOLVED_ORIENTATION
+        if current_permutation == 123456 and current_orientation == 0
           return solution
         elsif moves >= limit
           return false
@@ -48,8 +46,8 @@ module Scrambler
               next_permutation = current_permutation
               next_orientation = current_orientation
               ["", "2", "'"].each do |modifier|
-                next_permutation = @permutation_map[next_permutation.to_a][turn]
-                next_orientation = @orientation_map[next_orientation.to_a][turn]
+                next_permutation = @permutation_map[next_permutation][turn]
+                next_orientation = @orientation_map[next_orientation][turn]
                 s = search(next_permutation, next_orientation, limit, solution + ["#{turn}#{modifier}"], moves + 1)
                 return s if s
               end
