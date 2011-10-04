@@ -12,7 +12,7 @@ module Scrambler
       def scramble
         permutation = Solver::SOLVED_PERMUTATION.shuffle
         orientation = Array.new(6) { rand 3 }
-        orientation += [2 - orientation.inject { |sum, i| sum + i } % 3] # fix orientation parity
+        orientation += [(3 - (orientation.inject { |sum, i| sum + i } % 3)) % 3] # fix orientation parity
 
         @solver.solve(CornerPermutation.new(permutation), CornerOrientation.new(orientation))
       end
