@@ -26,30 +26,31 @@ module Scrambler
       end
 
       def solve(corner_permutation, corner_orientation)
+        @solution = []
         move_limit = -1
         begin
           move_limit += 1
-        end while !(solution = search(corner_permutation.to_i, corner_orientation.to_i, move_limit))
+        end while !search(corner_permutation.to_i, corner_orientation.to_i, move_limit, 0)
 
-        solution.join " "
+        @solution.join " "
       end
 
     private
-      def search(current_permutation, current_orientation, limit, solution = [], moves = 0)
+      def search(current_permutation, current_orientation, limit, depth = 0, last_move = nil)
         if current_permutation == 123456 and current_orientation == 0
-          return solution
-        elsif moves >= limit
+          return true
+        elsif limit == 0
           return false
         else
           [:R, :U, :F].each do |turn|
-            if solution.last == nil or solution.last[0] != turn
+            if last_move != turn
               next_permutation = current_permutation
               next_orientation = current_orientation
               ["", "2", "'"].each do |modifier|
                 next_permutation = @permutation_map[next_permutation][turn]
                 next_orientation = @orientation_map[next_orientation][turn]
-                s = search(next_permutation, next_orientation, limit, solution + ["#{turn}#{modifier}"], moves + 1)
-                return s if s
+                @solution[depth] = turn.to_s + modifier
+                return true if search(next_permutation, next_orientation, limit - 1, depth + 1, turn)
               end
             end
           end
