@@ -43,6 +43,7 @@ module Scrambler
                                 }
         end
 
+        @orientation_map[0][:length] = 0
         6.times do |l|
           (3**7).times do |o|
             if @orientation_map[o][:length] == l

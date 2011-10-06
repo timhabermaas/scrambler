@@ -1,5 +1,4 @@
 require "spec_helper"
-require "benchmark"
 
 describe Scrambler::RandomState::Solver do
   include Scrambler::RandomState
