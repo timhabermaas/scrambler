@@ -1,6 +1,6 @@
 module Scrambler
   class Clock
-    def scramble
+    def scramble(length = 0)
       pins = %w(U d)
       states = %w(UUdd dUdU ddUU UdUd dUUU UdUU UUUd UUdU UUUU dddd)
       scramble = states.map do |state|

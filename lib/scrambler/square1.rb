@@ -1,6 +1,6 @@
 module Scrambler
   class Square1
-    def scramble
+    def scramble(length = 0)
       scramble = []
       up_layer = (0..7).map{|i| i%2 == 0 ? 30 : 60}
       down_layer = [up_layer].flatten!
