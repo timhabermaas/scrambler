@@ -5,8 +5,8 @@ module Scrambler
       variants = %w(-- ++)
       variants_for_u = ["'", ""]
       (1..lines).map do |line|
-        ((1..columns).map do |column|
-          turns.sample + variants.sample
+        ((0..(columns-1)).map do |column|
+          turns[column % 2] + variants.sample
         end + ["U#{variants_for_u.sample}"]).join(" ")
       end.join("\n")
     end
